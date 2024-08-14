@@ -36,6 +36,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
+
+
 ALLOWED_HOSTS = [
     '8000-queenisabae-friendventu-xlnsyoz4158.ws.codeinstitute-ide.net',
 ]
@@ -52,9 +54,13 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+    
+    'rest_framework',
 
     # Apps
     'profiles',
+
+   
 ]
 
 MIDDLEWARE = [
