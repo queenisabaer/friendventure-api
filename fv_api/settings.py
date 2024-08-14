@@ -16,6 +16,13 @@ import os
 if os.path.exists('env.py'):
     import env
 
+# Cloudinary Settings 
+CLOUDINARY_STORAGE = {
+    'CLOUDINARY_URL': os.environ.get('CLOUDINARY_URL')
+}
+MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -29,7 +36,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '8000-queenisabae-friendventu-xlnsyoz4158.ws.codeinstitute-ide.net',
+]
 
 
 # Application definition
@@ -43,6 +52,9 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+
+    # Apps
+    'profiles',
 ]
 
 MIDDLEWARE = [
@@ -123,13 +135,11 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# Cloudinary Settings 
-MEDIA_URL = '/media/'
-DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
-CLOUDINARY_URL = os.environ.get("CLOUDINARY_URL")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+CSRF_TRUSTED_ORIGINS = ["https://8000-queenisabae-friendventu-xlnsyoz4158.ws.codeinstitute-ide.net"]
