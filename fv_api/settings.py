@@ -59,6 +59,7 @@ INSTALLED_APPS = [
 
     # Apps
     'profiles',
+    'friendventures',
 
    
 ]
