@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import datetime
 
 FRIENDVENTURE_CATEGORIES = (
     ('Indoor', 'Indoor'),
@@ -24,8 +25,10 @@ class Friendventure(models.Model):
 
     def get_datetime(self):
         """Combine date and time to return a datetime object."""
-        from datetime import datetime
         return datetime.combine(self.date, self.time)
+    
+    
+        
     class Meta:
         ordering = ['-created_at', 'category', 'date']
 

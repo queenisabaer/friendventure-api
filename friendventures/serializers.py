@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Friendventure
+from datetime import datetime
 
 
 class FriendventureSerializer(serializers.ModelSerializer):
@@ -23,6 +24,11 @@ class FriendventureSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 "Image height can't be larger than 2048px"
             )
+        return value
+    
+    def validate_date(self, value):
+        if value < datetime.now().date():
+            raise serializers.ValidationError("The date must be in the future.")
         return value
 
     class Meta:
