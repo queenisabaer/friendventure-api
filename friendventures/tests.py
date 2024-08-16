@@ -38,3 +38,11 @@ class FriendventureListViewTest(APITestCase):
         count = Friendventure.objects.count()
         self.assertEqual(count, 1)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+    def test_logged_out_user_cant_create_post(self):
+        response = self.client.post(
+            '/friendventures/', {
+                'title': 'friendventure title',
+                }
+        )
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)       
