@@ -39,7 +39,7 @@ class FriendventureListViewTest(APITestCase):
         self.assertEqual(count, 1)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-    def test_logged_out_user_cant_create_post(self):
+    def test_logged_out_user_cant_create_friendventure(self):
         response = self.client.post(
             '/friendventures/', {
                 'title': 'friendventure title',
@@ -76,7 +76,7 @@ class FriendventureDetailViewTest(APITestCase):
             description = 'Test description 2',
         )
 
-    def test_can_retrive_friendventure_with_id(self):
+    def test_can_retrieve_friendventure_with_id(self):
         response = self.client.get('/friendventures/1/')
         self.assertEqual(response.data['title'], 'friendventure title testuser1')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
