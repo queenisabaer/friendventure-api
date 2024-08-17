@@ -1,10 +1,3 @@
-Bug
-Django 5
-
-
-future feature:
-tagulous for tags
-
 # FriendVenture API
 
 Advanced Front-End Portfolio Project(PP5) - Code Institute
@@ -269,7 +262,7 @@ To see the [view of the live site](xxx) click on the _Open app_ button in the to
 ### Code
 - The initial setup and overall architecture of this project were guided by the Code Institute's Django Rest Framework walkthrough project. The core elements of the Profile, Friendventure and xx models, along with their respective serializers and filtering capabilities, were derived from the walkthrough project and subsequently tailored to meet the unique requirements of this project.
 - A great help and inspiration was the [*Django Recipe Sharing Tutorial*](https://www.youtube.com/playlist?list=PLXuTq6OsqZjbCSfiLNb2f1FOs8viArjWy) by Daisy Mc Girr.
-- 
+- How to Create and Use Signals in Django (To automatically include user who owns a friendventure as participant.) was found in an article by kt775629 at [GeeksForGeeks](https://www.geeksforgeeks.org/how-to-create-and-use-signals-in-django/)
 
 - The following websites were used as a source of knowledge: <br>
   - [Google](www.google.com)
