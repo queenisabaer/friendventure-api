@@ -24,4 +24,5 @@ urlpatterns = [
     path('', include('friendventures.urls')),
     path('', include('comments.urls')),
     path('', include('participants.urls')),
+    path('', include('bookmarks.urls')),
 ]

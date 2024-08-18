@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Bookmark
+from django.db import IntegrityError
 
 
 class BookmarkSerializer(serializers.ModelSerializer):
