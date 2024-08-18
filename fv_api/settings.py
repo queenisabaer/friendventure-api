@@ -62,7 +62,7 @@ INSTALLED_APPS = [
     'friendventures',
     'comments',
     'participants',
-
+    'bookmarks',
    
 ]
 
