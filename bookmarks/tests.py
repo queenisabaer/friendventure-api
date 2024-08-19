@@ -6,6 +6,9 @@ from rest_framework.test import APITestCase
 
 
 class BookmarkListViewTest(APITestCase):
+    """
+     Tests for the BookmarkList view.
+    """
     def setUp(self):
         self.user = User.objects.create_user(
             username="testuser",
@@ -50,6 +53,9 @@ class BookmarkListViewTest(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
 class BookmarkDetailViewTest(APITestCase):
+    """
+     Tests for the BookmarkDetail view.
+    """
     def setUp(self):
         self.testuser1 = User.objects.create_user(
             username="testuser",

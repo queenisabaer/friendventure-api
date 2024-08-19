@@ -5,6 +5,9 @@ from rest_framework.test import APITestCase
 
 
 class ProfileListViewTest(APITestCase):
+    """
+     Tests for the ProfileList view.
+    """
     def setUp(self):
         testuser1 = User.objects.create_user(
             username="testuser1",
@@ -23,6 +26,9 @@ class ProfileListViewTest(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
     
 class ProfileDetailViewTests(APITestCase):
+    """
+     Tests for the ProfileDetail view.
+    """
     def setUp(self):
         testuser1 = User.objects.create_user(
             username="testuser1",

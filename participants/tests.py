@@ -6,6 +6,9 @@ from rest_framework.test import APITestCase
 from django.shortcuts import get_object_or_404
 
 class ParticipantListViewTest(APITestCase):
+    """
+     Tests for the ParticipantList view.
+    """
     def setUp(self):
         self.testuser = User.objects.create_user(
             username="testuser",
@@ -63,6 +66,9 @@ class ParticipantListViewTest(APITestCase):
 
 
 class ParticipantDetailViewTest(APITestCase):
+    """
+     Tests for the ParticipantDetail view.
+    """
     def setUp(self):
         self.testuser1 = User.objects.create_user(
             username="testuser",

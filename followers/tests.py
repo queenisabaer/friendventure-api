@@ -6,6 +6,9 @@ from rest_framework.test import APITestCase
 
 
 class FollowerListViewTest(APITestCase):
+    """
+     Tests for the FollowerList view.
+    """
     def setUp(self):
         self.user1 = User.objects.create_user(
             username="testuser1",
@@ -61,6 +64,9 @@ class FollowerListViewTest(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
 class FollowerDetailViewTest(APITestCase):
+    """
+     Tests for the FollowerDetail view.
+    """
     def setUp(self):
         self.user1 = User.objects.create_user(
             username="testuser1",

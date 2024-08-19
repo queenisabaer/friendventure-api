@@ -5,6 +5,9 @@ from rest_framework.test import APITestCase
 
 
 class FriendventureListViewTest(APITestCase):
+    """
+     Tests for the FriendventureList view.
+    """
     def setUp(self):
         self.user = User.objects.create_user(
             username="testuser",
@@ -49,6 +52,9 @@ class FriendventureListViewTest(APITestCase):
 
 
 class FriendventureDetailViewTest(APITestCase):
+    """
+     Tests for the FriendventureDetail view.
+    """
     def setUp(self):
         testuser1 = User.objects.create_user(
             username="testuser1",

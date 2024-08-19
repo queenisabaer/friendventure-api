@@ -5,6 +5,9 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 
 class CommentListViewTest(APITestCase):
+    """
+     Tests for the CommentList view.
+    """
     def setUp(self):
         self.testuser = User.objects.create_user(
             username="testuser",
@@ -47,6 +50,9 @@ class CommentListViewTest(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
 class CommentDetailViewTest(APITestCase):
+    """
+     Tests for the CommentDetail view.
+    """
     def setUp(self):
         testuser1 = User.objects.create_user(
             username="testuser1",
