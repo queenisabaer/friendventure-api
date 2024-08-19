@@ -49,3 +49,4 @@ class FriendventureSerializer(serializers.ModelSerializer):
             "profile_id",
             "profile_pic",
         ]
+        
