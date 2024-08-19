@@ -98,7 +98,9 @@ class ParticipantDetailViewTest(APITestCase):
         response = self.client.delete('/participants/2/')
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
-    def test_user_can_delete_own_participation(self):
+    # the first participant is testuser1 due to signal that creates automatic
+    # participation for owner of friendventure
+    def test_user_cant_delete_other_users_participation(self):
         self.client.login(username='testuser2', password='password2')
         response = self.client.delete('/participants/1/')
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
