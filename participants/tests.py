@@ -51,6 +51,16 @@ class ParticipantListViewTest(APITestCase):
                 }
         )
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+    
+    def test_cant_participate_in_a_friendventure_twice(self):
+        self.client.login(username='testuser', password='password')
+        user = User.objects.get(username='testuser')
+        friendventure = Friendventure.objects.get(id=self.test_friendventure.id)
+        response = self.client.post(
+            '/participants/', {'owner': user, 'friendventure': friendventure}
+        )
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
 
 class ParticipantDetailViewTest(APITestCase):
     def setUp(self):
