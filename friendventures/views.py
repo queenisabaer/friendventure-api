@@ -15,7 +15,14 @@ class FriendventureList(generics.ListCreateAPIView):
         participants_count = Count('participants', distinct=True)
     ).order_by('-created_at')
     filter_backends = [
-        filters.OrderingFilter
+        filters.OrderingFilter,
+        filters.SearchFilter
+    ]
+    search_fields = [
+        'owner__username',
+        'title',
+        'date',
+        'place',
     ]
     ordering_fields = [
         'bookmarks_count',
