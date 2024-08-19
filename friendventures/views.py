@@ -1,4 +1,5 @@
 from rest_framework import generics, permissions, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from .models import Friendventure
 from .serializers import FriendventureSerializer
 from fv_api.permissions import IsOwnerOrReadOnly
@@ -16,7 +17,15 @@ class FriendventureList(generics.ListCreateAPIView):
     ).order_by('-created_at')
     filter_backends = [
         filters.OrderingFilter,
-        filters.SearchFilter
+        filters.SearchFilter,
+        DjangoFilterBackend
+    ]
+    filterset_fields = [
+        'owner__followed_by__owner__profile',
+        'participants__owner__profile',
+        'bookmarks__owner__profile',
+        'owner__profile',
+        'category',
     ]
     search_fields = [
         'owner__username',
