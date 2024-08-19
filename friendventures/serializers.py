@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from .models import Friendventure
+from participants.models import Participant
+from bookmarks.models import Bookmark
 from datetime import datetime
 
 
@@ -8,10 +10,30 @@ class FriendventureSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source="owner.profile.id")
     profile_pic = serializers.ReadOnlyField(source="owner.profile.profile_image.url")
+    bookmark_id = serializers.SerializerMethodField()
+    participants_id = serializers.SerializerMethodField()
 
     def get_is_owner(self, obj):
         request = self.context["request"]
         return request.user == obj.owner
+
+    def get_bookmark_id(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            bookmark = Bookmark.objects.filter(
+                owner=user, friendventure=obj
+            ).first()
+            return bookmark.id if bookmark else None
+        return None
+    
+    def get_participants_id(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            participant = Participant.objects.filter(
+                owner=user, friendventure=obj
+            ).first()
+            return participant.id if participant else None
+        return None
     
     def validate_image(self, value):
         if value.size > 1024 * 1024 * 2:
@@ -48,5 +70,7 @@ class FriendventureSerializer(serializers.ModelSerializer):
             "is_owner",
             "profile_id",
             "profile_pic",
+            "bookmark_id",
+            "participants_id",
         ]
         
