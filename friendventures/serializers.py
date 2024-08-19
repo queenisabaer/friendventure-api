@@ -12,6 +12,9 @@ class FriendventureSerializer(serializers.ModelSerializer):
     profile_pic = serializers.ReadOnlyField(source="owner.profile.profile_image.url")
     bookmark_id = serializers.SerializerMethodField()
     participants_id = serializers.SerializerMethodField()
+    bookmarks_count = serializers.ReadOnlyField()
+    comments_count = serializers.ReadOnlyField()
+    participants_count = serializers.ReadOnlyField()
 
     def get_is_owner(self, obj):
         request = self.context["request"]
@@ -72,5 +75,8 @@ class FriendventureSerializer(serializers.ModelSerializer):
             "profile_pic",
             "bookmark_id",
             "participants_id",
+            "bookmarks_count",
+            "comments_count",
+            "participants_count",
         ]
         
