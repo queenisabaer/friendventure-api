@@ -8,10 +8,16 @@ class Comment(models.Model):
     A model representing a comment made by a user on a specific friendventure.
 
     Attributes:
-    owner (User): A foreign key reference to the User model, indicating the user who made the comment.
-    friendventure (Friendventure): A foreign key reference to the Friendventure model, indicating the friendventure to which the comment belongs.
-    created_at (DateTimeField): A timestamp indicating when the comment was created. Automatically set to the current date and time when the comment is created.
-    updated_at (DateTimeField): A timestamp indicating when the comment was last updated. Automatically set to the current date and time whenever the comment is updated.
+    owner (User): A foreign key reference to the User model, indicating the
+     user who made the comment.
+    friendventure (Friendventure): A foreign key reference to the Friendventure
+     model, indicating the friendventure to which the comment belongs.
+    created_at (DateTimeField): A timestamp indicating when the comment was
+     created. Automatically set to the current date and time when the comment
+     is created.
+    updated_at (DateTimeField): A timestamp indicating when the comment was
+     last updated. Automatically set to the current date and time whenever the
+     comment is updated.
     content (TextField): The text content of the comment.
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
