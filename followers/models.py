@@ -7,9 +7,13 @@ class Follower(models.Model):
     A model representing the following relationship between users.
 
     Attributes:
-    owner (User): A foreign key reference to the User model, indicating the user who is following another user.
-    followed (User): A foreign key reference to the User model, indicating the user being followed.
-    created_at (DateTimeField): A timestamp indicating when the follow relationship was created. Automatically set to the current date and time when the relationship is created.
+    owner (User): A foreign key reference to the User model, indicating the
+     user who is following another user.
+    followed (User): A foreign key reference to the User model, indicating the
+     user being followed.
+    created_at (DateTimeField): A timestamp indicating when the follow
+     relationship was created. Automatically set to the current date and time
+     when the relationship is created.
     """
     owner = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='following'

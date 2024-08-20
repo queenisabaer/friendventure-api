@@ -26,7 +26,7 @@ class FollowerListViewTest(APITestCase):
             owner=self.user1,
             followed=self.user2
         )
-        
+
     def test_can_list_followers(self):
         response = self.client.get('/followers/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -40,9 +40,9 @@ class FollowerListViewTest(APITestCase):
                 }
         )
         count = Follower.objects.count()
-        # In the setup a follower relationship was already created, so the 
+        # In the setup a follower relationship was already created, so the
         # count should be 2
-        self.assertEqual(count, 2) 
+        self.assertEqual(count, 2)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
     def test_logged_out_user_cant_follow_other_user(self):
@@ -53,7 +53,7 @@ class FollowerListViewTest(APITestCase):
                 }
         )
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-    
+
     def test_cant_follow_other_user_twice(self):
         self.client.login(username='testuser1', password='password1')
         user1 = User.objects.get(username='testuser1')
@@ -62,6 +62,7 @@ class FollowerListViewTest(APITestCase):
             '/followers/', {'owner': user1, 'followed': user2}
         )
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
 
 class FollowerDetailViewTest(APITestCase):
     """
@@ -80,11 +81,11 @@ class FollowerDetailViewTest(APITestCase):
             username="testuser3",
             password="password3"
         )
-        self.test_follow= Follower.objects.create(
+        self.test_follow = Follower.objects.create(
             owner=self.user1,
             followed=self.user2
         )
-        self.test_follow2= Follower.objects.create(
+        self.test_follow2 = Follower.objects.create(
             owner=self.user2,
             followed=self.user3
         )
@@ -93,7 +94,7 @@ class FollowerDetailViewTest(APITestCase):
         follower_id = self.test_follow.id
         response = self.client.get(f'/followers/{follower_id}/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-    
+
     def test_cant_retrieve_bookmark_using_invalid_id(self):
         response = self.client.get('/followers/2018/')
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
@@ -107,8 +108,7 @@ class FollowerDetailViewTest(APITestCase):
         self.client.login(username='testuser1', password='password1')
         response = self.client.delete('/followers/2/')
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-    
+
     def test_user_cant_unfollow_other_user_if_not_logged_in(self):
         response = self.client.delete('/followers/1/')
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-
