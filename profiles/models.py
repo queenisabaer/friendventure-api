@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 
+
 class Profile(models.Model):
     """
     Profile model with one-to-one relationship to User,
@@ -9,14 +10,20 @@ class Profile(models.Model):
     used Code Institute's Django REST Framework walkthrough project
 
     Attributes:
-    owner (User): A one-to-one reference to the User model, indicating the owner of the profile.
+    owner (User): A one-to-one reference to the User model, indicating the
+     owner of the profile.
     name (str): An optional name of the profile owner.
-    profile_image (ImageField): An optional profile image, with a default placeholder image.
+    profile_image (ImageField): An optional profile image, with a default
+     placeholder image.
     description (str): An optional description for the profile.
     phone_number (int): An optional phone number for the profile owner.
     email (str): An optional email address for the profile owner.
-    created_at (DateTimeField): A timestamp indicating when the profile was created. Automatically set to the current date and time when the profile is created.
-    updated_at (DateTimeField): A timestamp indicating when the profile was last updated. Automatically set to the current date and time whenever the profile is updated.
+    created_at (DateTimeField): A timestamp indicating when the profile was
+     created. Automatically set to the current date and time when the profile
+     is created.
+    updated_at (DateTimeField): A timestamp indicating when the profile was
+     last updated. Automatically set to the current date and time whenever the
+     profile is updated.
 
     """
     owner = models.OneToOneField(User, on_delete=models.CASCADE)

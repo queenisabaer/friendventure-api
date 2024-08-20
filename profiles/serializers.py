@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import Profile
 from followers.models import Follower
 
+
 class ProfileSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source="owner.username")
     is_owner = serializers.SerializerMethodField()
@@ -11,7 +12,6 @@ class ProfileSerializer(serializers.ModelSerializer):
     following_count = serializers.ReadOnlyField()
     participants_count = serializers.ReadOnlyField()
     bookmarks_count = serializers.ReadOnlyField()
-   
 
     def get_is_owner(self, obj):
         request = self.context['request']

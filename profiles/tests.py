@@ -17,6 +17,7 @@ class ProfileListViewTest(APITestCase):
             username="testuser2",
             password="password2",
         )
+
     def test_profile_is_created_automatically(self):
         response = self.client.get('/profiles/')
         self.assertEqual(Profile.objects.count(), 2)
@@ -24,7 +25,8 @@ class ProfileListViewTest(APITestCase):
     def test_list_profiles(self):
         response = self.client.get('/profiles/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-    
+
+
 class ProfileDetailViewTests(APITestCase):
     """
      Tests for the ProfileDetail view.
@@ -42,12 +44,11 @@ class ProfileDetailViewTests(APITestCase):
     def test_can_retrieve_profile_using_valid_id(self):
         response = self.client.get('/profiles/1/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        
+
     def test_cant_retrieve_profile_using_invalid_id(self):
         response = self.client.get('/profiles/2018/')
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    
     def test_logged_in_user_can_update_own_profile(self):
         self.client.login(username='testuser1', password='password1')
         response = self.client.put(
@@ -63,4 +64,3 @@ class ProfileDetailViewTests(APITestCase):
             '/profiles/2/', {'phone_number': '12345'}
         )
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-
