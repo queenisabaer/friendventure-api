@@ -5,6 +5,7 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 from django.shortcuts import get_object_or_404
 
+
 class ParticipantListViewTest(APITestCase):
     """
      Tests for the ParticipantList view.
@@ -20,20 +21,21 @@ class ParticipantListViewTest(APITestCase):
         )
 
         self.test_friendventure = Friendventure.objects.create(
-            owner=self.testuser, 
-            title='friendventure title', 
+            owner=self.testuser,
+            title='friendventure title',
             date='2024-08-29',
             time='14:00:00'
         )
-    
-    # due to the signal the first participant is always the owner of the friendventure
-    def test_participant_is_created_automatically_with_owner_of_friendventure(self):
+
+    # due to the signal the first participant is always the owner of the
+    # friendventure
+    def test_auto_create_participant_with_owner_friendventure(self):
         response = self.client.get('/participants/')
         participant_count = Participant.objects.count()
         self.assertEqual(participant_count, 1)
 
     def test_can_list_participants(self):
-        response = self.client.get('/participants/') 
+        response = self.client.get('/participants/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_logged_in_user_can_participate_in_friendventure(self):
@@ -54,7 +56,7 @@ class ParticipantListViewTest(APITestCase):
                 }
         )
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-    
+
     def test_cant_participate_in_a_friendventure_twice(self):
         self.client.login(username='testuser', password='password')
         user = User.objects.get(username='testuser')
@@ -79,25 +81,25 @@ class ParticipantDetailViewTest(APITestCase):
             password="password2",
         )
         self.test_friendventure1 = Friendventure.objects.create(
-            owner= self.testuser1,
-            title = 'friendventure title testuser1',
-            date = '2024-09-01',
-            time ='15:00:00',
-            place = 'Test place testuser1',
-            description = 'Test description 1',
-            category = 'Indoor'
+            owner=self.testuser1,
+            title='friendventure title testuser1',
+            date='2024-09-01',
+            time='15:00:00',
+            place='Test place testuser1',
+            description='Test description 1',
+            category='Indoor'
         )
         self.test_friendventure2 = Friendventure.objects.create(
-            owner= self.testuser2,
-            title = 'friendventure title testuser2',
-            date = '2024-09-03',
-            time ='09:00:00',
-            place = 'Test place testuser2',
-            description = 'Test description 2',
+            owner=self.testuser2,
+            title='friendventure title testuser2',
+            date='2024-09-03',
+            time='09:00:00',
+            place='Test place testuser2',
+            description='Test description 2',
         )
         self.test_participation = Participant.objects.create(
-            owner= self.testuser1,
-            friendventure = self.test_friendventure2,
+            owner=self.testuser1,
+            friendventure=self.test_friendventure2,
         )
 
     def test_can_retrieve_participant_with_id(self):

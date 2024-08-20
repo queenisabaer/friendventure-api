@@ -2,9 +2,10 @@ from rest_framework import serializers
 from .models import Participant
 from django.db import IntegrityError
 
+
 class ParticipantSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
-    
+
     class Meta:
         model = Participant
         fields = [

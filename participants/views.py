@@ -11,10 +11,9 @@ class ParticipantList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         participant = serializer.save(owner=self.request.user)
-        
+
+
 class ParticipantDetail(generics.RetrieveDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = ParticipantSerializer
     queryset = Participant.objects.all()
-
-    
