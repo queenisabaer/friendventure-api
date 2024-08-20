@@ -1,14 +1,26 @@
 # FriendVenture API
 
-Advanced Front-End Portfolio Project(PP5) - Code Institute
+**Advanced Front-End Portfolio Project(PP5) - Code Institute**
 
-This is the API and backend part, the front end is a React project which can be found [here]()
+The *Friendventure API* is the backend for the FriendVenture application, built using Django Rest Framework. It serves as the foundation for a social network focused on organizing and participating in (sporting) activities with friends(to be), both indoor and outdoor.<br>
 
- *FriendVenture* is designed for users who want to 
+*FriendVenture API* is designed for users who want to create and join events, called "FriendVenture," which include a title, date, time, description, and location. Other users can confirm their participation or bookmark the FriendVenture for later. Each event is also open for comments, fostering communication and coordination among participants.<br>
 
+Additionally, users have the ability to follow others, allowing them to stay updated on FriendVentures their friends/followees plan to post in the future.
+<br>
+The API is organized into several key apps:<br>
 
-The deployed API can be found here: [Friendventure API]()
-View the deployed site [here.]()<br>
+_friendventures_: Manages the creation and details of events.<br>
+_profiles_: Handles user profiles and related information.<br>
+_participants_: Tracks user participation in various events.<br>
+_comments_: Enables users to comment on Friendventures.<br>
+_bookmarks_: Allows users to save Friendventures they are interested in.<br>
+_followers_: Facilitates the following and tracking of other users' activities.<br>
+<br>
+This API is designed to be consumed by a React frontend, providing a seamless experience for users looking to connect and engage in activities together.
+<br>
+<br>
+The deployed API can be found here: [Friendventure API](https://friendventure-api-8b417af3d1a0.herokuapp.com/)<br>
 
 ## Table of Contents
 
@@ -179,7 +191,7 @@ The error message indicates that the image field is expected to be a file upload
 
 ## Testing
 
-The app was tested regularly and deployed early to Heroku to make sure both local and remote worked the same.
+The app was tested regularly and deployed to Heroku to make sure both local and remote worked the same.
 
 ### Python Validator Testing (NEEDS UPDATE)
 
@@ -219,7 +231,7 @@ This site is deployed using Heroku. To deploy it from its GitHub repository to H
 13. Create a _Procfile_ in the root directory and add *web: gunicorn fv_api.wsgi*
 13. In Heroku enable the automatic deploy or manually deploy the code from the main branch
 
-To see the [view of the live site](xxx) click on the _Open app_ button in the top right corner or, if you enabled automatic deploy (step 13), log in to GitHub, navigate to the repository for this project by selecting [*queenisabaer/friendventure*](https://github.com/queenisabaer/friendventure), click on the _Deployments_ heading and choose in the _Environments_ section xxx. On top of the latest deployment is the link to the [live site](xxx).<br>
+To see the [view of the live site](https://friendventure-api-8b417af3d1a0.herokuapp.com/) click on the _Open app_ button in the top right corner or, if you enabled automatic deploy (step 13), log in to GitHub, navigate to the repository for this project by selecting [*queenisabaer/friendventure*](https://github.com/queenisabaer/friendventure), click on the _Deployments_ heading and choose in the _Environments_ section xxx. On top of the latest deployment is the link to the [live site](https://friendventure-api-8b417af3d1a0.herokuapp.com/).<br>
 
 ### Local deployment
 
@@ -260,8 +272,9 @@ To see the [view of the live site](xxx) click on the _Open app_ button in the to
 ## Credits
 
 ### Code
-- The initial setup and overall architecture of this project were guided by the Code Institute's Django Rest Framework walkthrough project. The core elements of the Profile, Friendventure and xx models, along with their respective serializers and filtering capabilities, were derived from the walkthrough project and subsequently tailored to meet the unique requirements of this project.
-- A great help and inspiration was the [*Django Recipe Sharing Tutorial*](https://www.youtube.com/playlist?list=PLXuTq6OsqZjbCSfiLNb2f1FOs8viArjWy) by Daisy Mc Girr.
+- The initial setup and overall architecture of this project were guided by the Code Institute's Django Rest Framework walkthrough project. The core elements of the Profile, Friendventure, Follower, Bookmark, Participant, and Comment models, along with their respective serializers, filtering capabilities, and tests, were derived from the walkthrough project and subsequently tailored to meet the unique requirements of this project.
+- A great help and inspiration were the advanced frontend projects by [Kelly Hutchinson](https://github.com/quiltingcode/events-backend-api), [Ronja Sjögren](https://github.com/Ajn0r/pet-palace-api), [Johannes Bernet](https://github.com/nacht-falter/sonic-explorers-api), and [Shubham Sinha](https://github.com/Sinha5714/pp5-api-ref/tree/main/pp5_api)
+
 - How to Create and Use Signals in Django (To automatically include user who owns a friendventure as participant.) was found in an article by kt775629 at [GeeksForGeeks](https://www.geeksforgeeks.org/how-to-create-and-use-signals-in-django/)
 
 - The following websites were used as a source of knowledge: <br>
