@@ -17,8 +17,8 @@ class FriendventureListViewTest(APITestCase):
     def test_can_list_friendventures(self):
         testuser = User.objects.get(username='testuser')
         Friendventure.objects.create(
-            owner=testuser, 
-            title='friendventure title', 
+            owner=testuser,
+            title='friendventure title',
             date='2024-08-29',
             time='14:00:00'
         )
@@ -31,9 +31,9 @@ class FriendventureListViewTest(APITestCase):
             '/friendventures/', {
                 'title': 'friendventure title',
                 'date': '2024-08-29',
-                'time':'14:00:00',
+                'time': '14:00:00',
                 'place': 'Test place',
-                'image' : '',
+                'image': '',
                 'description': 'Test description',
                 'category': 'Outdoor'
                 }
@@ -65,26 +65,28 @@ class FriendventureDetailViewTest(APITestCase):
             password="password2",
         )
         Friendventure.objects.create(
-            owner= testuser1,
-            title = 'friendventure title testuser1',
-            date = '2024-09-01',
-            time ='15:00:00',
-            place = 'Test place testuser1',
-            description = 'Test description 1',
-            category = 'Indoor'
+            owner=testuser1,
+            title='friendventure title testuser1',
+            date='2024-09-01',
+            time='15:00:00',
+            place='Test place testuser1',
+            description='Test description 1',
+            category='Indoor'
         )
         Friendventure.objects.create(
-            owner= testuser2,
-            title = 'friendventure title testuser2',
-            date = '2024-09-03',
-            time ='09:00:00',
-            place = 'Test place testuser2',
-            description = 'Test description 2',
+            owner=testuser2,
+            title='friendventure title testuser2',
+            date='2024-09-03',
+            time='09:00:00',
+            place='Test place testuser2',
+            description='Test description 2',
         )
 
     def test_can_retrieve_friendventure_with_id(self):
         response = self.client.get('/friendventures/1/')
-        self.assertEqual(response.data['title'], 'friendventure title testuser1')
+        self.assertEqual(
+            response.data['title'], 'friendventure title testuser1'
+        )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_cant_retrieve_friendventure_using_invalid_id(self):
@@ -108,7 +110,7 @@ class FriendventureDetailViewTest(APITestCase):
         response = self.client.put('/friendventures/2/', {
             'title': 'friendventure update title 2',
             'date': '2024-09-03',
-            'time':'09:00:00',
+            'time': '09:00:00',
             'place': 'Test place testuser2',
             })
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
@@ -127,5 +129,3 @@ class FriendventureDetailViewTest(APITestCase):
         response = self.client.get('/friendventures/2/')
         self.assertEqual(response.data['category'], 'Outdoor')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-    

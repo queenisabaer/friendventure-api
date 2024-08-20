@@ -9,7 +9,9 @@ class FriendventureSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source="owner.username")
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source="owner.profile.id")
-    profile_pic = serializers.ReadOnlyField(source="owner.profile.profile_image.url")
+    profile_pic = serializers.ReadOnlyField(
+        source="owner.profile.profile_image.url"
+    )
     bookmark_id = serializers.SerializerMethodField()
     participants_id = serializers.SerializerMethodField()
     bookmarks_count = serializers.ReadOnlyField()
@@ -28,7 +30,7 @@ class FriendventureSerializer(serializers.ModelSerializer):
             ).first()
             return bookmark.id if bookmark else None
         return None
-    
+
     def get_participants_id(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:
@@ -37,7 +39,7 @@ class FriendventureSerializer(serializers.ModelSerializer):
             ).first()
             return participant.id if participant else None
         return None
-    
+
     def validate_image(self, value):
         if value.size > 1024 * 1024 * 2:
             raise serializers.ValidationError("Image can't be larger than 2MB")
@@ -50,10 +52,12 @@ class FriendventureSerializer(serializers.ModelSerializer):
                 "Image height can't be larger than 2048px"
             )
         return value
-    
+
     def validate_date(self, value):
         if value < datetime.now().date():
-            raise serializers.ValidationError("The date must be in the future.")
+            raise serializers.ValidationError(
+                "The date must be in the future."
+            )
         return value
 
     class Meta:
@@ -79,4 +83,3 @@ class FriendventureSerializer(serializers.ModelSerializer):
             "comments_count",
             "participants_count",
         ]
-        
