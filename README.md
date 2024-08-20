@@ -208,7 +208,7 @@ To cover all the user story scenarios, the following automated tests have been w
 ### Browser Compatibility
   The tests were conducted using the following browser:
 
-- Google Chrome Version 126.0.6478.126 <br>
+- Google Chrome Version 127.0.6533.120 <br>
 
 ## Deployment (NEEDS UPDATE!)
 
