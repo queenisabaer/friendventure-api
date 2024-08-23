@@ -44,15 +44,16 @@ if 'DEVELOPMENT' not in os.environ:
         'rest_framework.renderers.JSONRenderer',
     ]
 
-REST_USE_JWT = True
-JWT_AUTH_SECURE = True
-JWT_AUTH_COOKIE = 'friendventure-auth'
-JWT_AUTH_REFRESH_COOKIE = 'friendventure-refresh-token'
-JWT_AUTH_SAMESITE = 'None'
-
-REST_AUTH_SERIALIZERS = {
+REST_AUTH ={
+    'USE_JWT': True,
+    'JWT_AUTH_HTTPONLY': False,
+    'JWT_AUTH_SECURE': True,
+    'JWT_AUTH_COOKIE': 'friendventure-auth-token',
+    'JWT_AUTH_REFRESH_COOKIE': 'friendventure-refresh-token',
+    'JWT_AUTH_SAMESITE': 'None',
     'USER_DETAILS_SERIALIZER': 'fv_api.serializers.CurrentUserSerializer' 
 }
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/

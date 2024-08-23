@@ -291,7 +291,7 @@ To see the [view of the live site](https://friendventure-api-8b417af3d1a0.heroku
 
 ### ReadMe
 
-- One last tima, a big thank you to [Kera Cudmore](https://github.com/kera-cudmore) and all of her tips on what makes a good README.
+- One last time, a big thank you to [Kera Cudmore](https://github.com/kera-cudmore) and all of her tips on what makes a good README.
 
 
 ### Acknowledgements
