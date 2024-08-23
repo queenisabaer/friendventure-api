@@ -48,7 +48,7 @@ REST_AUTH ={
     'USE_JWT': True,
     'JWT_AUTH_HTTPONLY': False,
     'JWT_AUTH_SECURE': True,
-    'JWT_AUTH_COOKIE': 'friendventure-auth-token',
+    'JWT_AUTH_COOKIE': 'friendventure-auth',
     'JWT_AUTH_REFRESH_COOKIE': 'friendventure-refresh-token',
     'JWT_AUTH_SAMESITE': 'None',
     'USER_DETAILS_SERIALIZER': 'fv_api.serializers.CurrentUserSerializer' 
