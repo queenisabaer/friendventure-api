@@ -146,6 +146,24 @@ The error message indicates that the image field is expected to be a file upload
 
 </details>
 
+<details>
+<summary> Axios error during log in </summary>
+<br>
+When tryning to log in to an account in my frontend project, the following error was displayed in the console:<br>
+
+![Screenshot of the error message in the console](/documentation/bugs/bug_log_in.png)<br>
+
+I assumed it was because of the newest version of dj-rest-auth, that I am using and the settings I did with the walkthrough project(using an older version). In previous versions, settings such as JWT_AUTH_COOKIE, JWT_AUTH_REFRESH_COOKIE, etc., were accessed directly from the settings module. However, the new structure requires accessing these settings through the REST_AUTH dictionary. After updating my settings file and trying to deploy it to heroku, the building process failed. <br>
+
+![Screenshot of the error message in the console](/documentation/bugs/bug_log_in2.png)<br>
+
+The error occurred because JWT-related settings were being imported into the views.py directly from settings.py, while in the new version of dj-rest-auth, these settings are now nested within the REST_AUTH dictionary. To resolve this issue, I updated the views.py file to access the JWT settings from the REST_AUTH dictionary rather than importing them directly.
+<br>
+<br>
+
+</details>
+
+
 
 ## Technologies Used
 
