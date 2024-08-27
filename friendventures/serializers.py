@@ -17,6 +17,7 @@ class FriendventureSerializer(serializers.ModelSerializer):
     bookmarks_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
     participants_count = serializers.ReadOnlyField()
+    datetime = serializers.SerializerMethodField()
 
     def get_is_owner(self, obj):
         request = self.context["request"]
@@ -60,6 +61,10 @@ class FriendventureSerializer(serializers.ModelSerializer):
             )
         return value
 
+    def get_datetime(self, obj):
+        datetime_value = obj.get_datetime()
+        return datetime_value.strftime('%d %b %Y %H:%M')
+
     class Meta:
         model = Friendventure
         fields = [
@@ -82,4 +87,5 @@ class FriendventureSerializer(serializers.ModelSerializer):
             "bookmarks_count",
             "comments_count",
             "participants_count",
+            "datetime",
         ]
