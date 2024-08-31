@@ -17,7 +17,7 @@ import dj_database_url
 if os.path.exists('env.py'):
     import env
 
-# Cloudinary Settings 
+# Cloudinary Settings
 CLOUDINARY_STORAGE = {
     'CLOUDINARY_URL': os.environ.get('CLOUDINARY_URL')
 }
@@ -44,14 +44,14 @@ if 'DEVELOPMENT' not in os.environ:
         'rest_framework.renderers.JSONRenderer',
     ]
 
-REST_AUTH ={
+REST_AUTH = {
     'USE_JWT': True,
     'JWT_AUTH_HTTPONLY': False,
     'JWT_AUTH_SECURE': True,
     'JWT_AUTH_COOKIE': 'friendventure-auth',
     'JWT_AUTH_REFRESH_COOKIE': 'friendventure-refresh-token',
     'JWT_AUTH_SAMESITE': 'None',
-    'USER_DETAILS_SERIALIZER': 'fv_api.serializers.CurrentUserSerializer' 
+    'USER_DETAILS_SERIALIZER': 'fv_api.serializers.CurrentUserSerializer'
 }
 
 
@@ -63,7 +63,6 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
-
 
 
 ALLOWED_HOSTS = [
@@ -84,7 +83,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
-    
+
     'rest_framework',
     'rest_framework.authtoken',
     'django_filters',
@@ -103,7 +102,7 @@ INSTALLED_APPS = [
     'participants',
     'bookmarks',
     'followers',
-   
+
 ]
 
 SITE_ID = 1
@@ -124,13 +123,9 @@ MIDDLEWARE = [
 if 'CLIENT_ORIGIN' in os.environ:
     CORS_ALLOWED_ORIGINS = [
         os.environ.get('CLIENT_ORIGIN')
-     ]
-# if 'CLIENT_ORIGIN_DEV' in os.environ:
-#     CORS_ALLOWED_ORIGIN_REGEXES = [
-#         os.environ.get('CLIENT_ORIGIN_DEV', ''),
-#     ]
+    ]
 
-if 'CLIENT_ORIGIN_DEV' in os.environ:    
+if 'CLIENT_ORIGIN_DEV' in os.environ:
     CORS_ALLOWED_ORIGIN_REGEXES = [r"^https://.*\.codeinstitute-ide\.net$",]
 
 
@@ -216,4 +211,5 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-CSRF_TRUSTED_ORIGINS = ["https://8000-queenisabae-friendventu-xlnsyoz4158.ws.codeinstitute-ide.net"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://8000-queenisabae-friendventu-xlnsyoz4158.ws.codeinstitute-ide.net"]

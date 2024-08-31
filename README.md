@@ -163,6 +163,19 @@ The error occurred because JWT-related settings were being imported into the vie
 
 </details>
 
+<details>
+<summary> CORS policy error </summary>
+<br>
+When working on the EditFriendventureForm, from one second to the next, I wasn't no longer able to interact with the site. In the console it showed the following error:<br>
+
+![Screenshot of the error message in the console](/documentation/bugs/bug_cors.png)<br>
+
+At first I thought the server was down, as it seemed to be really sudden and not related to my work on the code. After a certain time had passed, and I still could not access the site, I contacted Tutor support. I had to edit the settings in relation to the CLIENT_ORIGIN_DEV, after which I could access everything again. 
+<br>
+<br>
+
+</details>
+
 
 
 ## Technologies Used
@@ -314,6 +327,7 @@ To see the [view of the live site](https://friendventure-api-8b417af3d1a0.heroku
 
 ### Acknowledgements
 
--
+- Tutor support.
+- Gareth MCGirr
 
 **This is for educational use.**
