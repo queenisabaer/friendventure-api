@@ -7,7 +7,13 @@ from .serializers import ParticipantSerializer
 class ParticipantList(generics.ListCreateAPIView):
     serializer_class = ParticipantSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Participant.objects.all()
+
+    def get_queryset(self):
+        queryset = Participant.objects.all()
+        friendventure_id = self.request.query_params.get('friendventure', None)
+        if friendventure_id:
+            queryset = queryset.filter(friendventure_id=friendventure_id)
+        return queryset
 
     def perform_create(self, serializer):
         participant = serializer.save(owner=self.request.user)
