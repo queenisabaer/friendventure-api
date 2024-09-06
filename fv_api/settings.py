@@ -42,8 +42,6 @@ REST_FRAMEWORK = {
 if 'DEVELOPMENT' not in os.environ:
     REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
         'rest_framework.renderers.JSONRenderer',
-        'rest_framework.renderers.AdminRenderer',
-        'rest_framework.renderers.BrowsableAPIRenderer',
     ]
 
 REST_AUTH = {
