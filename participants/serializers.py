@@ -11,6 +11,7 @@ class ParticipantSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'owner',
+            'owner_id',
             'friendventure',
             'created_at'
         ]
