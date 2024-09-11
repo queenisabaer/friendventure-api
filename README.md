@@ -19,10 +19,8 @@ _followers_: Facilitates the following and tracking of other users' activities.<
 <br>
 This API is designed to be consumed by a React frontend, providing a seamless experience for users looking to connect and engage in activities together.
 <br>
-<br>
-
 The deployed API can be found here: [Friendventure API](https://friendventure-api-8b417af3d1a0.herokuapp.com/)<br>
-The deployed React project can be found [here](https://friendventure-702f1b6ed9cf.herokuapp.com/)
+The deployed React project can be found [here](https://friendventure-702f1b6ed9cf.herokuapp.com/)<br>
 The link for the GitHub repository to the associated front end can be found [here](https://github.com/queenisabaer/friendventure)
 
 ## Table of Contents
@@ -126,7 +124,7 @@ The *FollowerSerializer* is responsible for converting these follow relationship
 
 *Home*<br>
 A welcome message is displayed when you first enter the API site.
-[Screenshot of welcome message](documentation/readme/welcome-message.png)<br>
+![Screenshot of welcome message](documentation/readme/welcome-message.png)<br>
 
 
 ### Features, which I would like to implement in the future
@@ -136,6 +134,8 @@ A welcome message is displayed when you first enter the API site.
 
 
 ## API Endpoints
+
+The endpoints provided by the API are:<br>
 
 | Endpoint                           | HTTP Method | CRUD Operation |
 |------------------------------------|-------------|----------------|
