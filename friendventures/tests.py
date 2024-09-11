@@ -19,7 +19,7 @@ class FriendventureListViewTest(APITestCase):
         Friendventure.objects.create(
             owner=testuser,
             title='friendventure title',
-            date='2024-08-29',
+            date='2025-08-29',
             time='14:00:00'
         )
         response = self.client.get('/friendventures/')
@@ -30,7 +30,7 @@ class FriendventureListViewTest(APITestCase):
         response = self.client.post(
             '/friendventures/', {
                 'title': 'friendventure title',
-                'date': '2024-08-29',
+                'date': '2025-08-29',
                 'time': '14:00:00',
                 'place': 'Test place',
                 'image': '',
@@ -67,7 +67,7 @@ class FriendventureDetailViewTest(APITestCase):
         Friendventure.objects.create(
             owner=testuser1,
             title='friendventure title testuser1',
-            date='2024-09-01',
+            date='2025-09-01',
             time='15:00:00',
             place='Test place testuser1',
             description='Test description 1',
@@ -76,7 +76,7 @@ class FriendventureDetailViewTest(APITestCase):
         Friendventure.objects.create(
             owner=testuser2,
             title='friendventure title testuser2',
-            date='2024-09-03',
+            date='2025-09-03',
             time='09:00:00',
             place='Test place testuser2',
             description='Test description 2',
@@ -97,7 +97,7 @@ class FriendventureDetailViewTest(APITestCase):
         self.client.login(username='testuser1', password='password1')
         response = self.client.put('/friendventures/1/', {
                 'title': 'friendventure update title',
-                'date': '2024-09-01',
+                'date': '2025-09-01',
                 'time': '15:00:00',
                 'place': 'Test place testuser1',
                 })
@@ -109,7 +109,7 @@ class FriendventureDetailViewTest(APITestCase):
         self.client.login(username='testuser1', password='password1')
         response = self.client.put('/friendventures/2/', {
             'title': 'friendventure update title 2',
-            'date': '2024-09-03',
+            'date': '2025-09-03',
             'time': '09:00:00',
             'place': 'Test place testuser2',
             })
