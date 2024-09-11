@@ -31,7 +31,6 @@ The link for the GitHub repository to the associated front end can be found [her
 - [Structure](#structure)
 - [Database](#database)
   - [Models](#models)
-- [Features](#features)
 - [API Endpoints](#api-endpoints)
 - [Bugs](#bugs)
 - [Technologies Used](#technologies-used)
@@ -62,7 +61,7 @@ The link for the GitHub repository to the associated front end can be found [her
 I used an Agile methodology approach to plan this project. This was implemented through the GitHub Project board with milestones, epics, user stories and tasks.
 Each user story was classified with a label according to MoSCoW prioritization.<br>
 The Kanban board can be seen [here](https://github.com/users/queenisabaer/projects/4).<br>
-More about the user stories can be found in the Readme for the frontend part that can be found [here](https://github.com/queenisabaer/friendventure?tab=readme-ov-file#user-experience)
+More about the user stories can be found in the [Readme for the frontend part here.](https://github.com/queenisabaer/friendventure?tab=readme-ov-file#user-experience)
 
 ## Structure
 
@@ -83,12 +82,11 @@ I used a PostgreSQL provided by Code Institute as relational database.<br>
   - DateField: A field for storing dates.
   - TimeField: A field for storing time.
   - TextField: A large text field.
-  - ImageField: 
+  - ImageField: A field for uploading images, requires *upload_to* parameter to specify the directory where images will be uploaded.
   - OneToOneField: A one-to-one relationship.
   - ForeignKey: A many-to-one relationship.
   - IntegerField: An integer field.
-  - EmailField: 
-  - DecimalField: A fixed-precision decimal number.
+  - EmailField: A field to store and validate email addresses.
   - URLField: A CharField for URLs.<br>
 - **Relationships:**<br>
   - A User has one Profile.
@@ -126,23 +124,45 @@ The associated *CommentSerializer* handles the serialization of comment data, in
 - The Follower model manages the relationships where users follow other users within the application. It establishes a connection between the owner (the user who is following) and the followed (the user being followed), allowing for tracking of these interactions. Each follow relationship is time-stamped, showing when it was created, and the model enforces uniqueness to prevent duplicate follow relationships. The data is ordered by the most recent followings by default.
 The *FollowerSerializer* is responsible for converting these follow relationships into a serialized format for API responses. It includes fields for the usernames of both the follower and the followed, and it prevents users from following themselves or following the same user multiple times. This ensures the integrity of the following system within the application, supporting functionalities like displaying followers, following counts, and managing user connections.
 
-## Features
-
-### Existing Features
-
 *Home*<br>
 A welcome message is displayed when you first enter the API site.
 [Screenshot of welcome message](documentation/readme/welcome-message.png)<br>
 
-*Profiles*<br>
-
-A list of all profiles can be seen
 
 ### Features, which I would like to implement in the future
 
-- Tagging System with Tagulous: "Integrate a robust tagging system using Tagulous to allow users to categorize their FriendVentures with relevant tags. This feature will enable easier searching and filtering of events based on interests, locations, or activity types, enhancing the overall user experience by making it more intuitive to find and participate in activities that match user preferences." <br>
-- User-to-User Messaging: "Implement a direct messaging feature to facilitate communication between users within the platform. This feature will allow participants to coordinate details, ask questions, and build connections before and after attending Friendventures. The messaging system will support real-time conversations, ensuring seamless interaction among users."<br>
+- *Tagging System with Tagulous*: "Integrate a robust tagging system using Tagulous to allow users to categorize their FriendVentures with relevant tags. This feature will enable easier searching and filtering of events based on interests, locations, or activity types, enhancing the overall user experience by making it more intuitive to find and participate in activities that match user preferences." <br>
+- *User-to-User Messaging*: "Implement a direct messaging feature to facilitate communication between users within the platform. This feature will allow participants to coordinate details, ask questions, and build connections before and after attending Friendventures. The messaging system will support real-time conversations, ensuring seamless interaction among users."<br>
 
+
+## API Endpoints
+
+| Endpoint                           | HTTP Method | CRUD Operation |
+|------------------------------------|-------------|----------------|
+| /dj-rest-auth/registration/        | POST        | N/A            |
+| /dj-rest-auth/login/               | POST        | N/A            |
+| /dj-rest-auth/logout/              | POST        | N/A            |
+| /profiles/                         | GET         | Read           |
+| /profiles/\<int:pk\>/              | GET         | Read           |
+|                                    | PUT         | Update         |
+| /friendventures/                   | GET         | Read           |
+|                                    | POST        | Create         |
+| /friendventures/\<int:pk\>/        | GET         | Read           |
+|                                    | PUT         | Update         |
+|                                    | DELETE      | Delete         |
+| /comments/                         | GET         | Read           |
+|                                    | POST        | Create         |
+| /comments/\<int:pk\>               | GET         | Read           |
+|                                    | PUT         | Update         |
+|                                    | DELETE      | Delete         |
+| /bookmarks/                        | GET         | Read           |
+|                                    | POST        | Create         |
+| /bookmarks/\<int:pk\>/             | GET         | Read           |
+|                                    | DELETE      | Delete         |
+| /participants/                     | GET         | Read           |
+|                                    | POST        | Create         |
+| /participants/\<int:pk\>/          | GET         | Read           |
+|                                    | DELETE      | Delete         |
 
 ## Bugs
 
