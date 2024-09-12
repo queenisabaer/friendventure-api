@@ -7,6 +7,9 @@ from fv_api.permissions import IsOwnerOrReadOnly
 
 
 class ProfileList(generics.ListAPIView):
+    """
+    API View to list all profiles with optional filtering and ordering.
+    """
     queryset = Profile.objects.annotate(
         friendventures_count=Count('owner__friendventure', distinct=True),
         followers_count=Count('owner__followed_by', distinct=True),
@@ -38,6 +41,9 @@ class ProfileList(generics.ListAPIView):
 
 
 class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    API View to retrieve, update, or delete a specific profile.
+    """
     serializer_class = ProfileSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Profile.objects.annotate(

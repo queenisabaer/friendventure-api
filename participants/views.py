@@ -5,6 +5,11 @@ from .serializers import ParticipantSerializer
 
 
 class ParticipantList(generics.ListCreateAPIView):
+    """
+    API View to list all participants or create a new participant.
+
+    Filtering by 'friendventure' ID can be done using the query parameter 'friendventure'.
+    """
     serializer_class = ParticipantSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
@@ -20,6 +25,9 @@ class ParticipantList(generics.ListCreateAPIView):
 
 
 class ParticipantDetail(generics.RetrieveDestroyAPIView):
+    """
+    API View to retrieve or delete a specific participant.
+    """
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = ParticipantSerializer
     queryset = Participant.objects.all()

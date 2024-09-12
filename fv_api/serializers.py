@@ -3,6 +3,11 @@ from rest_framework import serializers
 
 
 class CurrentUserSerializer(UserDetailsSerializer):
+    """
+    Serializer for the current user's details, extending the UserDetailsSerializer.
+
+    Adds additional fields for user profile information, including profile ID and profile image URL.
+    """
     profile_id = serializers.ReadOnlyField(source='profile.id')
     profile_image = serializers.ReadOnlyField(
         source='profile.profile_image.url'

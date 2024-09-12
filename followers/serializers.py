@@ -4,6 +4,11 @@ from django.db import IntegrityError
 
 
 class FollowerSerializer(serializers.ModelSerializer):
+    """
+    Serializer for the Follower model.
+
+    Handles serialization of follower relationships, including the owner and the followed user.
+    """
     owner = serializers.ReadOnlyField(source='owner.username')
     followed_name = serializers.ReadOnlyField(source='followed.username')
 
@@ -18,6 +23,9 @@ class FollowerSerializer(serializers.ModelSerializer):
         ]
 
     def create(self, validated_data):
+        """
+        Create a new follower relationship, ensuring the owner and followed are not the same user.
+        """
         owner = validated_data.get('owner')
         followed = validated_data.get('followed')
 

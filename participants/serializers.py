@@ -4,6 +4,12 @@ from django.db import IntegrityError
 
 
 class ParticipantSerializer(serializers.ModelSerializer):
+    """
+    Serializer for the Participant model.
+
+    Handles serialization of participant details in a friendventure, including the owner of
+    the participant relationship and the associated friendventure.
+    """
     owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:

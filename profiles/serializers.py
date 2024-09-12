@@ -4,6 +4,12 @@ from followers.models import Follower
 
 
 class ProfileSerializer(serializers.ModelSerializer):
+    """
+    Serializer for the Profile model.
+
+    Handles serialization of user profiles, including ownership information,
+    counts of various related objects, and image validation
+    """
     owner = serializers.ReadOnlyField(source="owner.username")
     owner_id = serializers.ReadOnlyField(source = "owner.id")
     is_owner = serializers.SerializerMethodField()
